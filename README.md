@@ -14,10 +14,10 @@ not conflict with other ChiliPeppr widgets.
 | ID                    | org-jscut-gcode-widget |
 | Name                  | Widget / JSCut |
 | Description           | This widget enables you to view files sent directly to ChiliPeppr from JSCut. JSCut sends data to your ChiliPeppr cloud storage that is available to any logged in user. When you come back into CP this widget you can view the files in your cloud storage related to JSCut. |
-| chilipeppr.load() URL | http://raw.githubusercontent.com/raykholo/widget-jscut/master/auto-generated-widget.html |
-| Edit URL              | http://ide.c9.io/raykholo/widget-jscut |
-| Github URL            | http://github.com/raykholo/widget-jscut |
-| Test URL              | https://preview.c9users.io/raykholo/widget-jscut/widget.html |
+| chilipeppr.load() URL | http://raw.githubusercontent.com/chilipeppr/widget-jscut/master/auto-generated-widget.html |
+| Edit URL              | http://ide.c9.io/chilipeppr/widget-jscut |
+| Github URL            | http://github.com/chilipeppr/widget-jscut |
+| Test URL              | https://preview.c9users.io/chilipeppr/widget-jscut/widget.html |
 
 ## Example Code for chilipeppr.load() Statement
 
@@ -28,17 +28,21 @@ Javascript. Then you use cprequire() to find your widget's Javascript and get
 back the instance of it.
 
 ```javascript
+// Inject new div to contain widget or use an existing div with an ID
+$("body").append('<' + 'div id="myDivOrgJscutGcodeWidget"><' + '/div>');
+
 chilipeppr.load(
-  "#myDivWidgetInsertedInto",
-  "http://raw.githubusercontent.com/raykholo/widget-jscut/master/auto-generated-widget.html",
+  "#myDivOrgJscutGcodeWidget",
+  "http://raw.githubusercontent.com/chilipeppr/widget-jscut/master/auto-generated-widget.html",
   function() {
-    // Callback after widget loaded into #myDivWidgetInsertedInto
+    // Callback after widget loaded into #myDivOrgJscutGcodeWidget
+    // Now use require.js to get reference to instantiated widget
     cprequire(
       ["inline:org-jscut-gcode-widget"], // the id you gave your widget
-      function(mywidget) {
-        // Callback that is passed reference to your newly loaded widget
-        console.log("My widget just got loaded.", mywidget);
-        mywidget.init();
+      function(myObjOrgJscutGcodeWidget) {
+        // Callback that is passed reference to the newly loaded widget
+        console.log("Widget / JSCut just got loaded.", myObjOrgJscutGcodeWidget);
+        myObjOrgJscutGcodeWidget.init();
       }
     );
   }
@@ -128,7 +132,7 @@ The table below shows, in order, the methods and properties inside the widget/el
           </tr>
       </thead>
       <tbody>
-      <tr valign="top"><td>id</td><td>string</td><td>"org-jscut-gcode-widget"</td></tr><tr valign="top"><td>name</td><td>string</td><td>"Widget / JSCut"</td></tr><tr valign="top"><td>desc</td><td>string</td><td>"This widget enables you to view files sent directly to ChiliPeppr from JSCut. JSCut sends data to your ChiliPeppr cloud storage that is available to any logged in user. When you come back into CP this widget you can view the files in your cloud storage related to JSCut."</td></tr><tr valign="top"><td>url</td><td>string</td><td>"http://raw.githubusercontent.com/raykholo/widget-jscut/master/auto-generated-widget.html"</td></tr><tr valign="top"><td>fiddleurl</td><td>string</td><td>"http://ide.c9.io/raykholo/widget-jscut"</td></tr><tr valign="top"><td>githuburl</td><td>string</td><td>"http://github.com/raykholo/widget-jscut"</td></tr><tr valign="top"><td>testurl</td><td>string</td><td>"http://widget-jscut-raykholo.c9users.io/widget.html"</td></tr><tr valign="top"><td>publish</td><td>object</td><td>Please see docs above.</td></tr><tr valign="top"><td>subscribe</td><td>object</td><td>Please see docs above.</td></tr><tr valign="top"><td>foreignPublish</td><td>object</td><td>Please see docs above.</td></tr><tr valign="top"><td>foreignSubscribe</td><td>object</td><td>Please see docs above.</td></tr><tr valign="top"><td>init</td><td>function</td><td>function () </td></tr><tr valign="top"><td>getUrlParameterByName</td><td>function</td><td>function (name) </td></tr><tr valign="top"><td>checkIfUrlParamToAutoLoad</td><td>function</td><td>function () </td></tr><tr valign="top"><td>getFilesFromChiliPepprStorage</td><td>function</td><td>function () </td></tr><tr valign="top"><td>buildJscutFileMenu</td><td>function</td><td>function (files) </td></tr><tr valign="top"><td>loadFileFromChiliPeppr</td><td>function</td><td>function (key) </td></tr><tr valign="top"><td>deleteRecentFiles</td><td>function</td><td>function () </td></tr><tr valign="top"><td>createRecentFileEntry</td><td>function</td><td>function (fileStr, info) </td></tr><tr valign="top"><td>buildRecentFileMenu</td><td>function</td><td>function () </td></tr><tr valign="top"><td>loadFileFromLocalStorageKey</td><td>function</td><td>function (key) </td></tr><tr valign="top"><td>forkSetup</td><td>function</td><td>function () </td></tr>
+      <tr valign="top"><td>id</td><td>string</td><td>"org-jscut-gcode-widget"</td></tr><tr valign="top"><td>name</td><td>string</td><td>"Widget / JSCut"</td></tr><tr valign="top"><td>desc</td><td>string</td><td>"This widget enables you to view files sent directly to ChiliPeppr from JSCut. JSCut sends data to your ChiliPeppr cloud storage that is available to any logged in user. When you come back into CP this widget you can view the files in your cloud storage related to JSCut."</td></tr><tr valign="top"><td>url</td><td>string</td><td>"http://raw.githubusercontent.com/chilipeppr/widget-jscut/master/auto-generated-widget.html"</td></tr><tr valign="top"><td>fiddleurl</td><td>string</td><td>"http://ide.c9.io/chilipeppr/widget-jscut"</td></tr><tr valign="top"><td>githuburl</td><td>string</td><td>"http://github.com/chilipeppr/widget-jscut"</td></tr><tr valign="top"><td>testurl</td><td>string</td><td>"http://widget-jscut-chilipeppr.c9users.io/widget.html"</td></tr><tr valign="top"><td>publish</td><td>object</td><td>Please see docs above.</td></tr><tr valign="top"><td>subscribe</td><td>object</td><td>Please see docs above.</td></tr><tr valign="top"><td>foreignPublish</td><td>object</td><td>Please see docs above.</td></tr><tr valign="top"><td>foreignSubscribe</td><td>object</td><td>Please see docs above.</td></tr><tr valign="top"><td>init</td><td>function</td><td>function () </td></tr><tr valign="top"><td>getUrlParameterByName</td><td>function</td><td>function (name) </td></tr><tr valign="top"><td>checkIfUrlParamToAutoLoad</td><td>function</td><td>function () </td></tr><tr valign="top"><td>getFilesFromChiliPepprStorage</td><td>function</td><td>function () </td></tr><tr valign="top"><td>buildJscutFileMenu</td><td>function</td><td>function (files) </td></tr><tr valign="top"><td>loadFileFromChiliPeppr</td><td>function</td><td>function (key) </td></tr><tr valign="top"><td>deleteRecentFiles</td><td>function</td><td>function () </td></tr><tr valign="top"><td>createRecentFileEntry</td><td>function</td><td>function (fileStr, info) </td></tr><tr valign="top"><td>buildRecentFileMenu</td><td>function</td><td>function () </td></tr><tr valign="top"><td>loadFileFromLocalStorageKey</td><td>function</td><td>function (key) </td></tr><tr valign="top"><td>forkSetup</td><td>function</td><td>function () </td></tr>
       </tbody>
   </table>
 
