@@ -10,8 +10,8 @@ cpdefine("inline:org-jscut-gcode-widget", ["chilipeppr_ready"], function () {
     
     return {
         id: "org-jscut-gcode-widget",
-        url: "http://fiddle.jshell.net/chilipeppr/7ZzSV/show/light/",
-        fiddleurl: "http://jsfiddle.net/chilipeppr/7ZzSV/",
+        url: "(auto fill by runme.js)",
+        fiddleurl: "(auto fill by runme.js)",
         name: "Widget / JSCut",
         desc: "This widget enables you to view files sent directly to ChiliPeppr from JSCut. JSCut sends data to your ChiliPeppr cloud storage that is available to any logged in user. When you come back into CP this widget you can view the files in your cloud storage related to JSCut.",
         publish: {
