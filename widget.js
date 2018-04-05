@@ -1,15 +1,15 @@
 // Test this element. This code is auto-removed by the chilipeppr.load()
-cprequire_test(["inline:org-jscut-gcode-widget"], function (macro) {
+cprequire_test(["inline:com-cgmun-remote-loader-widget"], function (macro) {
     console.log("test running of " + macro.id);
     macro.init();
         
 } /*end_test*/ );
 
 
-cpdefine("inline:org-jscut-gcode-widget", ["chilipeppr_ready"], function () {
+cpdefine("inline:com-cgmun-remote-loader-widget", ["chilipeppr_ready"], function () {
     
     return {
-        id: "org-jscut-gcode-widget",
+        id: "com-cgmun-remote-loader-widget",
         name: "Widget / JSCut",
         desc: "This widget enables you to view files sent directly to ChiliPeppr from JSCut. JSCut sends data to your ChiliPeppr cloud storage that is available to any logged in user. When you come back into CP this widget you can view the files in your cloud storage related to JSCut.",
         url: "(auto fill by runme.js)",       // The final URL of the working widget as a single HTML file with CSS and Javascript inlined. You can let runme.js auto fill this if you are using Cloud9.
@@ -28,16 +28,16 @@ cpdefine("inline:org-jscut-gcode-widget", ["chilipeppr_ready"], function () {
             this.forkSetup();
                         
             // setup del files
-            $('#org-jscut-gcode-widget .recent-file-delete').click( this.deleteRecentFiles.bind(this));
+            $('#com-cgmun-remote-loader-widget .recent-file-delete').click( this.deleteRecentFiles.bind(this));
 
             this.buildRecentFileMenu();
                         
             // popovers
-            $('#org-jscut-gcode-widget .panel-heading .btn').popover();
+            $('#com-cgmun-remote-loader-widget .panel-heading .btn').popover();
             
             this.getFilesFromChiliPepprStorage();
             //jscut-refresh
-            $('#org-jscut-gcode-widget .jscut-refresh').click( this.getFilesFromChiliPepprStorage.bind(this));
+            $('#com-cgmun-remote-loader-widget .jscut-refresh').click( this.getFilesFromChiliPepprStorage.bind(this));
             
             this.checkIfUrlParamToAutoLoad();
             
@@ -56,7 +56,7 @@ cpdefine("inline:org-jscut-gcode-widget", ["chilipeppr_ready"], function () {
                 // just ask for our widget to be shown
                 // this assumes the workspace that loaded us just has a parent div
                 // with the hidden class
-                $('#org-jscut-gcode-widget').parent().removeClass('hidden');
+                $('#com-cgmun-remote-loader-widget').parent().removeClass('hidden');
             } else if (loadJscut != null && loadJscut.length > 0) {
                 // assume it's the key and load it
                 this.loadFileFromChiliPeppr(loadJscut);
@@ -67,7 +67,7 @@ cpdefine("inline:org-jscut-gcode-widget", ["chilipeppr_ready"], function () {
             // this queries chilipeppr's storage facility to see what
             // files are available for jscut
             var that = this;
-            $('#org-jscut-gcode-widget-body .alert-warning').addClass('hidden');
+            $('#com-cgmun-remote-loader-widget-body .alert-warning').addClass('hidden');
 
             $.ajax({
                 url: "http://www.chilipeppr.com/datagetallkeys",
@@ -80,7 +80,7 @@ cpdefine("inline:org-jscut-gcode-widget", ["chilipeppr_ready"], function () {
                 // see if error
                 if (data.Error) {
                     // we got json, but it's error
-                    $('#org-jscut-gcode-widget-body .alert-warning').html("<p>We can't retrieve your data from JSCut because you are not logged in. Please login to ChiliPeppr to see your list of available files.</p><p>Error:" + data.Msg + "</p>").removeClass('hidden');
+                    $('#com-cgmun-remote-loader-widget-body .alert-warning').html("<p>We can't retrieve your data from JSCut because you are not logged in. Please login to ChiliPeppr to see your list of available files.</p><p>Error:" + data.Msg + "</p>").removeClass('hidden');
                     return;
                 }
                     
@@ -107,9 +107,9 @@ cpdefine("inline:org-jscut-gcode-widget", ["chilipeppr_ready"], function () {
             console.log("buildJscutFileMenu. files:", files);
             
             // cleanup prev recent files
-            $('#org-jscut-gcode-widget .dropdown-menu-main > li.recent-file-item').remove();
+            $('#com-cgmun-remote-loader-widget .dropdown-menu-main > li.recent-file-item').remove();
             
-            var li = $('#org-jscut-gcode-widget .dropdown-menu-main > li.recent-files');
+            var li = $('#com-cgmun-remote-loader-widget .dropdown-menu-main > li.recent-files');
             console.log("listItems:", li);
             var ctr = 0;
             var that = this;
@@ -145,7 +145,7 @@ cpdefine("inline:org-jscut-gcode-widget", ["chilipeppr_ready"], function () {
             // call dataget on chilipeppr servers to get value
             // then load as if drag dropped
             console.log("loadFileFromChiliPeppr. key:", key);
-            $('#org-jscut-gcode-widget-body .alert-warning').addClass('hidden');
+            $('#com-cgmun-remote-loader-widget-body .alert-warning').addClass('hidden');
             
             $.ajax({
                 url: "http://www.chilipeppr.com/dataget?key=" + key,
@@ -160,7 +160,7 @@ cpdefine("inline:org-jscut-gcode-widget", ["chilipeppr_ready"], function () {
                 // see if error
                 if (data.Error) {
                     // we got json, but it's error
-                    $('#org-jscut-gcode-widget-body .alert-warning').html("<p>We could not load your JSCut file from ChiliPeppr's cloud storage. Please login to ChiliPeppr to load your file.</p><p>Error:" + data.Msg + "</p>").removeClass('hidden');
+                    $('#com-cgmun-remote-loader-widget-body .alert-warning').html("<p>We could not load your JSCut file from ChiliPeppr's cloud storage. Please login to ChiliPeppr to load your file.</p><p>Error:" + data.Msg + "</p>").removeClass('hidden');
                     return;
                 }
 
@@ -181,7 +181,7 @@ cpdefine("inline:org-jscut-gcode-widget", ["chilipeppr_ready"], function () {
             for (var i = 0; i < localStorage.length; i++){
                 console.log("localStorage.item.key:", localStorage.key(i));
                 var key = localStorage.key(i);
-                if (key.match(/org-jscut-gcode-widget/))
+                if (key.match(/com-cgmun-remote-loader-widget/))
                     localStorage.removeItem(key);
                 
             }
@@ -193,7 +193,7 @@ cpdefine("inline:org-jscut-gcode-widget", ["chilipeppr_ready"], function () {
             // get the next avail slot
             var lastSlot = -1;
             for(var ctr = 0; ctr < 100; ctr++) {
-                if ('org-jscut-gcode-widget-recent' + ctr in localStorage) {
+                if ('com-cgmun-remote-loader-widget-recent' + ctr in localStorage) {
                     console.log("found recent file entry. ctr:", ctr);
                     lastSlot = ctr;
                 }
@@ -201,12 +201,12 @@ cpdefine("inline:org-jscut-gcode-widget", ["chilipeppr_ready"], function () {
             console.log("lastSlot we found:", lastSlot);
             
             var nextSlot = lastSlot + 1;
-            var recent = localStorage.getItem("org-jscut-gcode-widget-recent" + nextSlot);
+            var recent = localStorage.getItem("com-cgmun-remote-loader-widget-recent" + nextSlot);
             if (recent == null) {
                 console.log("empty slot. filling.");
-                localStorage.setItem("org-jscut-gcode-widget-recent" + nextSlot, fileStr);
-                localStorage.setItem("org-jscut-gcode-widget-recent" + nextSlot + "-name", info.name);
-                localStorage.setItem("org-jscut-gcode-widget-recent" + nextSlot + "-lastMod", info.lastModified);
+                localStorage.setItem("com-cgmun-remote-loader-widget-recent" + nextSlot, fileStr);
+                localStorage.setItem("com-cgmun-remote-loader-widget-recent" + nextSlot + "-name", info.name);
+                localStorage.setItem("com-cgmun-remote-loader-widget-recent" + nextSlot + "-lastMod", info.lastModified);
                 this.buildRecentFileMenu();
             }
             
@@ -214,17 +214,17 @@ cpdefine("inline:org-jscut-gcode-widget", ["chilipeppr_ready"], function () {
         buildRecentFileMenu: function() {
             
             // cleanup prev recent files
-            $('#org-jscut-gcode-widget .dropdown-menu-main > li.recent-file-item').remove();
+            $('#com-cgmun-remote-loader-widget .dropdown-menu-main > li.recent-file-item').remove();
             
-            var li = $('#org-jscut-gcode-widget .dropdown-menu-main > li.recent-files');
+            var li = $('#com-cgmun-remote-loader-widget .dropdown-menu-main > li.recent-files');
             console.log("listItems:", li);
             var ctr = 0;
-            var recentName = localStorage.getItem("org-jscut-gcode-widget-recent" + ctr + "-name");
+            var recentName = localStorage.getItem("com-cgmun-remote-loader-widget-recent" + ctr + "-name");
             while(recentName != null) {
                 console.log("recentFile ctr:", ctr, "recentName:", recentName);
-                var recentLastModified = localStorage.getItem("org-jscut-gcode-widget-recent" + ctr + "-lastMod");
+                var recentLastModified = localStorage.getItem("com-cgmun-remote-loader-widget-recent" + ctr + "-lastMod");
                 var rlm = new Date(recentLastModified);
-                var recentSize = localStorage.getItem("org-jscut-gcode-widget-recent" + ctr).length;
+                var recentSize = localStorage.getItem("com-cgmun-remote-loader-widget-recent" + ctr).length;
                 var rsize = parseInt(recentSize / 1024);
                 if (rsize == 0) rsize = 1;
                 var newLi = $(
@@ -235,7 +235,7 @@ cpdefine("inline:org-jscut-gcode-widget", ["chilipeppr_ready"], function () {
                     //' <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></a></li>');
                 newLi.insertAfter(li);
                 var that = this;
-                newLi.click("org-jscut-gcode-widget-recent" + ctr, function(data) {
+                newLi.click("com-cgmun-remote-loader-widget-recent" + ctr, function(data) {
                     console.log("got recent file click. data:", data);
                     var key = data.data;
                     that.loadFileFromLocalStorageKey(key);
@@ -243,7 +243,7 @@ cpdefine("inline:org-jscut-gcode-widget", ["chilipeppr_ready"], function () {
                 });
 
                 ctr++;
-                recentName = localStorage.getItem("org-jscut-gcode-widget-recent" + ctr + "-name");
+                recentName = localStorage.getItem("com-cgmun-remote-loader-widget-recent" + ctr + "-name");
                 
             }
         },
