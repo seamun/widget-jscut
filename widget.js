@@ -11,7 +11,7 @@ cpdefine("inline:com-cgmun-remote-loader-widget", ["chilipeppr_ready"], function
     return {
         id: "com-cgmun-remote-loader-widget",
         name: "Widget / JSCut",
-        desc: "This widget enables you to view files sent directly to ChiliPeppr from JSCut. JSCut sends data to your ChiliPeppr cloud storage that is available to any logged in user. When you come back into CP this widget you can view the files in your cloud storage related to JSCut.",
+        desc: "This widget enables you to view files sent directly to ChiliPeppr from Remote interfaces. Remote Loader sends data to your ChiliPeppr cloud storage that is available to any logged in user. When you come back into CP this widget you can view the files in your cloud storage.",
         url: "(auto fill by runme.js)",       // The final URL of the working widget as a single HTML file with CSS and Javascript inlined. You can let runme.js auto fill this if you are using Cloud9.
         fiddleurl: "(auto fill by runme.js)", // The edit URL. This can be auto-filled by runme.js in Cloud9 if you'd like, or just define it on your own to help people know where they can edit/fork your widget
         githuburl: "(auto fill by runme.js)", // The backing github repo
